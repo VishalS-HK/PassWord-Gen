@@ -20,3 +20,22 @@ function generatePassword() {
     passwordEl1.textContent = pass1;
     passwordEl2.textContent = pass2;
 }
+
+function copyText(element) {
+    let passwordToCopy = "";
+    if(element.id === "password-box-1") {
+        passwordToCopy = passwordEl1.textContent;
+    } else if(element.id === "password-box-2") {
+        passwordToCopy = passwordEl2.textContent;
+    }
+
+    if(passwordToCopy) {
+        navigator.clipboard.writeText(passwordToCopy).then(() => {
+            alert("Password copied to clipboard");
+        }).catch(err => {
+            console.error("Failed to copy:", err);
+        });
+    } else {
+        alert("No password to copy");
+    }
+}
